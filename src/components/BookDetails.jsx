@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { useLoaderData, useNavigation } from 'react-router-dom'
+import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom'
 import LoadingSpinner from './LoadingSpinner';
 // import LoadingSpinner from './LoadingSpinner'
 
@@ -15,7 +15,13 @@ const BookDetails = () => {
     const [fold, setFold] = useState(true);
 
     const { image, title, desc, authors, publisher, year, rating, url, price } =
-      bookData
+      bookData;
+    
+
+    const navigate = useNavigate();
+    const backToPage =() =>{
+        navigate(-1);
+    }
 
     return (
     <div className='my-container'>
@@ -67,6 +73,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
+      <center><button onClick={backToPage} className='flex flex-col items-center bg-blue-400 px-4 py-3 rounded-lg hover:bg-blue-700 transition duration-150 text-white font-bold mt-3'>Back Page</button></center>
     </div>
   )
 };
